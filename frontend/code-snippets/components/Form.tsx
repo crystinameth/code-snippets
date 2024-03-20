@@ -17,10 +17,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export const snippetSchema = z.object({
   username: z.string().min(2).max(50),
-  codeLanguage: z.string(),
+  codeLanguage: z.string().min(1),
   stdin: z.string(),
   sourceCode: z.string().min(2),
 });
@@ -45,6 +52,10 @@ export default function SnippetForm() {
         data
       );
       console.log("Snippet created:", response.data);
+      toast({
+        title: "Form Sent",
+        description: "Code submitted!",
+      });
       form.reset(); // Reset the form after successful submission
     } catch (error) {
       console.error("Error creating snippet:", error);
@@ -76,9 +87,27 @@ export default function SnippetForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Code Language</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter Code Language" {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a Language" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="c++">C++</SelectItem>
+                  <SelectItem value="java">Java</SelectItem>
+                  <SelectItem value="python">Pyhton</SelectItem>
+                  <SelectItem value="golang">GO</SelectItem>
+                  <SelectItem value="javascript">JavaScript</SelectItem>
+                  <SelectItem value="kotlin">Kotlin</SelectItem>
+                  <SelectItem value="typescript">TypeScript</SelectItem>
+                  <SelectItem value="rust">Rust</SelectItem>
+                  <SelectItem value="ruby">Ruby</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                Select the Language of your choice
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -106,24 +135,19 @@ export default function SnippetForm() {
             <FormItem>
               <FormLabel>Source Code</FormLabel>
               <FormControl>
-                <Input placeholder="Write Code here" {...field} />
+                <textarea
+                  placeholder="Write Code here"
+                  {...field}
+                  className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  style={{ height: "10rem" }}
+                />
               </FormControl>
               <FormDescription>Code Editor</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          onClick={() => {
-            toast({
-              title: "Form Sent",
-              description: "Code submitted!",
-            });
-          }}
-        >
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   );

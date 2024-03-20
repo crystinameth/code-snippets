@@ -1,4 +1,4 @@
-import SnippetForm from "@/components/SnippetForm";
+import SnippetForm from "@/components/Form";
 
 export default function Home() {
 

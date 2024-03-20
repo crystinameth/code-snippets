@@ -1,15 +1,13 @@
+"use client"
 import { useState, useEffect } from "react";
-import SnippetList from "@/components/SnippetList";
-import { Snippet } from "@/components/SnippetList";
+import SnippetList, { Snippet } from "@/components/SnippetList";
 
 export default function Snippets() {
   const [snippets, setSnippets] = useState<Snippet[]>([]);
   useEffect(() => {
-    // Fetch entries from backend API (GET request) using fetch or axios
-    // Update entries state with the fetched data
     const fetchData = async () => {
         try {
-          const response = await fetch('/api/snippets');
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/snippets`);
           const data = await response.json();
           setSnippets(data);
         } catch (error) {
@@ -21,7 +19,7 @@ export default function Snippets() {
   }, []);
   return (
     <div className="container mx-auto">
-      <h1 className="text-2xl font-bold my-4">All Snippets</h1>
+      <h1 className="text-2xl font-bold my-4 text-primary/80">All Snippets</h1>
       <SnippetList snippets={snippets} />
     </div>
   );

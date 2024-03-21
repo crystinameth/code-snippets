@@ -8,7 +8,7 @@ const app = express();
 
 //Middleware
 app.use(cors({
-  origin: 'https://code-snippets-gfln-plm261xeu-shivi-mishras-projects.vercel.app',
+  origin: 'https://code-snippets-gfln.vercel.app',
   methods: ['GET', 'POST'],
 }));
 app.use(json());

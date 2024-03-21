@@ -7,7 +7,10 @@ const PORT = process.env.PORT;
 const app = express();
 
 //Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://code-snippets-gfln-o52daklbb-shivi-mishras-projects.vercel.app',
+  methods: ['GET', 'POST'],
+}));
 app.use(json());
 
 //Routes

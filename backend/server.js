@@ -8,9 +8,8 @@ const app = express();
 
 //Middleware
 app.use(cors({
-  origin: 'https://code-snippets-6k9p.onrender.com',
+  origin: 'https://code-snippets-gfln-plm261xeu-shivi-mishras-projects.vercel.app',
   methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(json());
 

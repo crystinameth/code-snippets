@@ -96,7 +96,7 @@ export default function SnippetForm() {
                 <SelectContent>
                   <SelectItem value="c++">C++</SelectItem>
                   <SelectItem value="java">Java</SelectItem>
-                  <SelectItem value="python">Pyhton</SelectItem>
+                  <SelectItem value="python">Python</SelectItem>
                   <SelectItem value="golang">GO</SelectItem>
                   <SelectItem value="javascript">JavaScript</SelectItem>
                   <SelectItem value="kotlin">Kotlin</SelectItem>

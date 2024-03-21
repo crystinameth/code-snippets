@@ -24,7 +24,9 @@ interface SnippetListProps {
 const SnippetList = ({ snippets }: SnippetListProps) => {
   return (
     <Table>
-      <TableCaption className="text-lg">A list of all code snippets.</TableCaption>
+      <TableCaption className="text-lg">
+        A list of all code snippets.
+      </TableCaption>
       <TableHeader className="text-xl">
         <TableRow>
           <TableHead>Username</TableHead>
@@ -39,6 +41,11 @@ const SnippetList = ({ snippets }: SnippetListProps) => {
             <TableCell>{snippet.username}</TableCell>
             <TableCell>{snippet.codeLanguage}</TableCell>
             <TableCell>{snippet.stdin}</TableCell>
+            <TableCell>
+              {snippet.sourceCode.length > 100
+                ? snippet.sourceCode.substring(0, 100) + "..."
+                : snippet.sourceCode}
+            </TableCell>
             <TableCell>
               {new Date(snippet.timestamp).toLocaleString()}
             </TableCell>

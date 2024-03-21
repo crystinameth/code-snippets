@@ -10,6 +10,7 @@ const app = express();
 app.use(cors({
   origin: 'https://code-snippets-gfln-o52daklbb-shivi-mishras-projects.vercel.app',
   methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(json());
 

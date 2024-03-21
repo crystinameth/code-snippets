@@ -32,6 +32,7 @@ const SnippetList = ({ snippets }: SnippetListProps) => {
           <TableHead>Username</TableHead>
           <TableHead>Code Language</TableHead>
           <TableHead>Standard Input</TableHead>
+          <TableHead>Source Code</TableHead>
           <TableHead>Timestamp</TableHead>
         </TableRow>
       </TableHeader>
